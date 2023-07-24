@@ -1,0 +1,88 @@
+:root {
+  --grey-light: rgb(231, 231, 231);
+}
+
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: minmax(150px, 200px) 1fr;
+}
+
+nav {
+  background-color: lightskyblue;
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+  display: grid;
+}
+
+header {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.search-container,
+.welcome-container {
+  display: flex;
+  align-items: center;
+}
+
+.search,
+.welcome {
+  flex: 1 0 auto;
+}
+
+.main {
+  background-color: var(--grey-light);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: repeat(2, 1fr);
+  padding: 15px;
+  gap: 20px;
+}
+
+.projects {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: 1fr 50px;
+}
+
+.card,
+.card-announce,
+.card-trending {
+  background-color: white;
+  padding: 15px;
+}
+
+.announce,
+.trending {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-announce,
+.card-trending {
+  flex: 1 0 auto;
+}
+
+.leftbar {
+  background-color: var(--grey-light);
+  display: grid;
+  grid-template-rows: auto auto;
+}
