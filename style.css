@@ -1,7 +1,17 @@
 :root {
-  --grey-light: rgb(231, 231, 231);
-  --white-main: white;
-  --accent-color: rgb(60, 60, 195);
+  --grey-light: rgb(236, 237, 239);
+  --grey-dark: rgb(205, 209, 213);
+  --text-white: rgb(237, 241, 248);
+  --white-main: rgb(249, 250, 250);
+  --white-light: rgb(251, 252, 252);
+  --primary-color: rgb(18, 27, 56);
+  --primary-darker: rgb(6, 9, 19);
+  --accent-color: rgb(228, 213, 231);
+  --accent-color2: rgb(201, 214, 232);
+  --shadow-color: rgb(0, 0, 0, 0.08);
+  --text-header: rgb(16, 17, 18);
+  --text-p: rgb(70, 76, 83);
+  --border-width: 1.5px;
 }
 
 * {
@@ -21,8 +31,8 @@ a {
 }
 
 nav {
-  background-color: var(--accent-color);
-  color: var(--white-main);
+  background-color: var(--primary-color);
+  color: var(--text-white);
   grid-column: 1 / 2;
   grid-row: 1 / 3;
   display: grid;
@@ -34,6 +44,7 @@ nav {
 .logo {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 
 .icons-logo {
@@ -46,7 +57,7 @@ nav {
 
 .icons-logo path,
 .icons-left path {
-  fill: white;
+  fill: var(--text-white);
 }
 
 nav .primary ul,
@@ -54,22 +65,30 @@ nav .secondary ul {
   list-style-type: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
+}
+
+.nav-link:hover,
+h3:hover {
+  text-decoration: underline;
 }
 
 .primary ul li a,
 .secondary ul li a {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 header {
+  background-color: var(--white-main);
   grid-column: 2 / 4;
   grid-row: 1 / 2;
   display: grid;
   grid-template-rows: 1fr 2fr;
-  padding: 20px 40px;
+  padding: 20px 40px 10px 40px;
+  z-index: 1;
+  box-shadow: 0 2px 8px 2px var(--shadow-color);
 }
 
 .search-container,
@@ -79,11 +98,19 @@ header {
   gap: 20px;
 }
 
+.searchbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding-right: 50px;
+}
+
 #search {
-  background-color: var(--grey-light);
-  border: none;
+  background-color: var(--white-light);
+  border: solid var(--border-width) var(--grey-dark);
   padding: 0.7rem 2rem;
   border-radius: 2rem;
+  flex: 1 0 auto;
 }
 
 button,
@@ -96,10 +123,10 @@ button,
 }
 
 .icons-top path {
-  fill: black;
+  fill: var(--text-header);
 }
 
-#search,
+.searchbar,
 .welcome {
   flex: 1 0 auto;
 }
@@ -114,26 +141,53 @@ button,
   ;
 }
 
+.welcome-container .avatar:hover {
+  transition: 0.3s;
+  transform: scale(1.08);
+}
+
 .btn-container {
   display: flex;
-  gap: 20px;
+  gap: 10px;
+}
+
+button {
+  width: 120px;
 }
 
 .btn-header {
-  background-color: var(--accent-color);
-  color: var(--white-main);
-  border: none;
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: solid var(--border-width) var(--primary-color);
   padding: 0.7rem 2rem;
   border-radius: 2rem;
+}
+
+.btn-header.secondary {
+  background-color: var(--white-light);
+  color: var(--primary-color);
+  border: solid var(--border-width) var(--primary-color)
+}
+
+.btn-header.primary:hover {
+  background-color: var(--primary-darker);
+  border: solid var(--border-width) var(--primary-darker);
+}
+
+.btn-header.secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  border: solid var(--border-width) var(--primary-color);
 }
 
 .main {
   background-color: var(--grey-light);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr minmax(auto, 250px);
   grid-template-rows: repeat(2, auto);
-  padding: 15px;
-  gap: 20px;
+  padding: 20px 30px 15px 30px;
+  gap: 40px;
+  overflow: auto;
 }
 
 .projects {
@@ -141,22 +195,36 @@ button,
   grid-row: 1 / 3;
 }
 
+h2 {
+  padding-bottom: 20px;
+}
+
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 10px;
+  gap: 20px;
 }
 
 .card {
   display: grid;
   grid-template-rows: 1fr auto;
+  border-left: solid 10px var(--accent-color);
+}
+
+.card:hover,
+.card-announce:hover,
+.card-trending:hover {
+  transition: 0.3s;
+  transform: scale(1.01);
 }
 
 .card,
 .card-announce,
 .card-trending {
-  background-color: white;
-  padding: 15px;
+  background-color: var(--white-main);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 2px var(--shadow-color);
 }
 
 .card-actions {
@@ -164,11 +232,12 @@ button,
   align-items: center;
   justify-content: end;
   gap: 10px;
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .icons-card {
   height: 1.5rem;
+  color: var(--text-p)
 }
 
 .announce,
@@ -184,6 +253,7 @@ button,
   display: flex;
   flex-direction: column;
   gap: 20px;
+  border-left: solid 10px var(--accent-color2);
 }
 
 .trender .avatar {
@@ -194,6 +264,26 @@ button,
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+h2,
+h3,
+h4,
+h5 {
+  color: var(--text-header);
+}
+
+h5 {
+  font-size: 1rem;
+  padding-bottom: 10px;
+}
+
+p {
+  color: var(--text-p);
+}
+
+.card-text h3 {
+  padding-bottom: 15px;
 }
 
 .leftbar {
