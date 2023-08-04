@@ -26,6 +26,7 @@ a {
 }
 
 .container {
+  height: 100vh;
   display: grid;
   grid-template-columns: auto 1fr;
 }
@@ -299,7 +300,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 5px;
   gap: 10px;
 }
 
